@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" font-family="Helvetica, Arial, sans-serif" role="img" aria-label="FHIR2 layers and Lab on FHIR">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a5a56"/></marker></defs>
+  <rect x="0" y="0" width="960" height="470" fill="#ffffff"/>
+  <!-- clients -->
+  <rect x="20" y="40" width="160" height="80" rx="10" fill="#eef4f2" stroke="#9fb3ad"/>
+  <text x="100" y="72" text-anchor="middle" font-size="15" font-weight="bold" fill="#1c2422">FHIR clients</text>
+  <text x="100" y="94" text-anchor="middle" font-size="12" fill="#4a5a56">Bahmni apps, curl,</text>
+  <text x="100" y="110" text-anchor="middle" font-size="12" fill="#4a5a56">integrations</text>
+  <line x1="180" y1="80" x2="238" y2="80" stroke="#4a5a56" stroke-width="2" marker-end="url(#a)"/>
+  <text x="209" y="72" text-anchor="middle" font-size="11" fill="#4a5a56">HTTPS</text>
+  <!-- FHIR2 frame -->
+  <rect x="230" y="20" width="420" height="430" rx="14" fill="none" stroke="#0f6b5c" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="440" y="42" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f6b5c">OpenMRS FHIR2 module 1.9.0</text>
+  <g font-size="13" fill="#1c2422">
+    <rect x="250" y="55" width="380" height="50" rx="8" fill="#e3f1ed" stroke="#0f6b5c"/>
+    <text x="440" y="77" text-anchor="middle" font-weight="bold">Servlets + filters</text>
+    <text x="440" y="95" text-anchor="middle" font-size="11" fill="#4a5a56">/ws/fhir2/R4 · /ws/fhir2/R3 · AuthenticationFilter (Basic / session)</text>
+    <rect x="250" y="125" width="380" height="50" rx="8" fill="#e3f1ed" stroke="#0f6b5c"/>
+    <text x="440" y="147" text-anchor="middle" font-weight="bold">Resource providers (HAPI)</text>
+    <text x="440" y="165" text-anchor="middle" font-size="11" fill="#4a5a56">18 R4 resources · 17 STU3 · search params, _include, operations</text>
+    <rect x="250" y="195" width="380" height="50" rx="8" fill="#e3f1ed" stroke="#0f6b5c"/>
+    <text x="440" y="217" text-anchor="middle" font-weight="bold">Services</text>
+    <text x="440" y="235" text-anchor="middle" font-size="11" fill="#4a5a56">FhirPatientService, FhirTaskService, FhirObservationService …</text>
+    <rect x="250" y="265" width="185" height="50" rx="8" fill="#e3f1ed" stroke="#0f6b5c"/>
+    <text x="342" y="287" text-anchor="middle" font-weight="bold">Translators</text>
+    <text x="342" y="305" text-anchor="middle" font-size="11" fill="#4a5a56">OpenMRS ⇄ FHIR</text>
+    <rect x="445" y="265" width="185" height="50" rx="8" fill="#e3f1ed" stroke="#0f6b5c"/>
+    <text x="537" y="287" text-anchor="middle" font-weight="bold">DAOs</text>
+    <text x="537" y="305" text-anchor="middle" font-size="11" fill="#4a5a56">Hibernate search queries</text>
+    <rect x="250" y="370" width="380" height="60" rx="8" fill="#f1f1ee" stroke="#8a8f8c"/>
+    <text x="440" y="395" text-anchor="middle" font-weight="bold">OpenMRS database (MySQL)</text>
+    <text x="440" y="414" text-anchor="middle" font-size="11" fill="#4a5a56">patient · encounter · visit · obs · orders · test_order · fhir_task · fhir_diagnostic_report</text>
+  </g>
+  <g stroke="#4a5a56" stroke-width="2">
+    <line x1="440" y1="105" x2="440" y2="123" marker-end="url(#a)"/>
+    <line x1="440" y1="175" x2="440" y2="193" marker-end="url(#a)"/>
+    <line x1="342" y1="245" x2="342" y2="263" marker-end="url(#a)"/>
+    <line x1="537" y1="245" x2="537" y2="263" marker-end="url(#a)"/>
+    <line x1="537" y1="315" x2="537" y2="368" marker-end="url(#a)"/>
+  </g>
+  <text x="547" y="345" font-size="11" fill="#4a5a56">SQL</text>
+  <!-- Lab on FHIR -->
+  <rect x="690" y="150" width="170" height="160" rx="10" fill="#fdf0e6" stroke="#c4581f"/>
+  <text x="775" y="175" text-anchor="middle" font-size="14" font-weight="bold" fill="#1c2422">Lab on FHIR 1.3.1</text>
+  <g font-size="11" fill="#4a5a56" text-anchor="middle">
+    <text x="775" y="198">Order / Encounter listener</text>
+    <text x="775" y="216">LabOrderHandler → Task</text>
+    <text x="775" y="234">FetchTaskUpdates (30 s)</text>
+    <text x="775" y="252">RetryFailedTasks (1 h)</text>
+    <text x="775" y="270">HAPI client</text>
+    <text x="775" y="292">failed_task · task_request</text>
+  </g>
+  <line x1="688" y1="220" x2="634" y2="220" stroke="#c4581f" stroke-width="2" marker-end="url(#a)"/>
+  <text x="661" y="238" text-anchor="middle" font-size="10" fill="#c4581f">in-process</text>
+  <!-- LIS -->
+  <rect x="720" y="370" width="220" height="70" rx="10" fill="#fdf0e6" stroke="#c4581f"/>
+  <text x="830" y="398" text-anchor="middle" font-size="14" font-weight="bold" fill="#1c2422">LIS FHIR server</text>
+  <text x="830" y="418" text-anchor="middle" font-size="11" fill="#4a5a56">HAPI FHIR JPA (labonfhir.lisUrl)</text>
+  <line x1="775" y1="312" x2="800" y2="366" stroke="#c4581f" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="850" y1="366" x2="830" y2="312" stroke="#c4581f" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a)"/>
+  <text x="742" y="345" text-anchor="end" font-size="11" fill="#c4581f">transaction (PUT)</text>
+  <text x="852" y="345" font-size="11" fill="#c4581f">poll results</text>
+</svg>
