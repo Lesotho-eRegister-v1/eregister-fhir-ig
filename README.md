@@ -1,4 +1,4 @@
-# OpenMRS FHIR2 and Lab on FHIR Implementation Guide (draft 0.1.0)
+# OpenMRS FHIR2 and Lab on FHIR Implementation Guide ( v1.0.1)
 
 A FHIR R4 implementation guide (FHIR Shorthand + HL7 IG Publisher). It describes:
 
@@ -8,7 +8,9 @@ A FHIR R4 implementation guide (FHIR Shorthand + HL7 IG Publisher). It describes
 
 ## Sources
 
-- Analysis of the module builds in `../openmrs-module-fhir2-release`, `../openmrs-module-labonfhir-release` and `../bahmni-module-fhir2-addl-extension`.
+- `openmrs-module-fhir2-release`
+- `openmrs-module-labonfhir-release`
+- `bahmni-module-fhir2-addl-extension` (this module has been disabled for now)
 - The instance's public capability statement (`GET /openmrs/ws/fhir2/R4/metadata`, 2026-11-18). It is stored as
   `input/resources/CapabilityStatement-openmrs-fhir2-r4-server.json`.
 - Not yet included: instance settings that need a login (loaded modules, `labonfhir.*` global properties, record counts).
@@ -25,7 +27,7 @@ A FHIR R4 implementation guide (FHIR Shorthand + HL7 IG Publisher). It describes
 
 ## Published site
 
-https://lesotho-eregister-v1.github.io/eregister-fhir-ig/ (built by `.github/workflows/publish-ig.yml` on every push to `main`; enable it once under Settings → Pages → Source: GitHub Actions).
+https://lesotho-eregister-v1.github.io/eregister-fhir-ig/
 
 ## Build
 
