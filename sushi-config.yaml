@@ -7,11 +7,11 @@ description: >-
   Documents the FHIR R4 API served by the OpenMRS FHIR2 module 1.9.0 and the FHIR-based laboratory
   workflow implemented by the Lab on FHIR module 1.3.1 (eRegister / DISA LIS), as deployed on the
   Bahmni instance. Built from analysis of the module builds and the live server's capability statement.
-status: draft
-version: 0.1.0
+status: active
+version: 1.0.1
 fhirVersion: 4.0.1
 copyrightYear: 2026+
-releaseLabel: ci-build
+releaseLabel: release
 license: CC0-1.0
 jurisdiction: urn:iso:std:iso:3166#LS "Lesotho"
 publisher:

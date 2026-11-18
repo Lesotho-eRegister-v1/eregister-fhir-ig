@@ -11,7 +11,7 @@ Title: "Lab on FHIR 1.3.1 (client)"
 * url = "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/CapabilityStatement/labonfhir-client"
 * name = "LabOnFHIRClient"
 * title = "Lab on FHIR 1.3.1 (client)"
-* status = #draft
+* status = #active
 * publisher = "Lesotho eRegister Team"
 * experimental = false
 * date = "2026-11-18"
@@ -51,7 +51,7 @@ Title: "LIS FHIR server requirements"
 * url = "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/CapabilityStatement/lis-server-requirements"
 * name = "LISServerRequirements"
 * title = "LIS FHIR server requirements"
-* status = #draft
+* status = #active
 * publisher = "Lesotho eRegister Team"
 * experimental = false
 * date = "2026-11-18"
@@ -110,7 +110,7 @@ Title: "Patient and Encounter $everything (OpenMRS FHIR2)"
 * url = "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/EncounterPatient-everything"
 * name = "EncounterPatientEverything"
 * title = "Patient and Encounter $everything (OpenMRS FHIR2)"
-* status = #draft
+* status = #active
 * publisher = "Lesotho eRegister Team"
 * kind = #operation
 * code = #everything
@@ -140,7 +140,7 @@ Title: "Observation $lastn-encounters (OpenMRS FHIR2)"
 * url = "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/Observation-lastn-encounters"
 * name = "ObservationLastnEncounters"
 * title = "Observation $lastn-encounters (OpenMRS FHIR2)"
-* status = #draft
+* status = #active
 * publisher = "Lesotho eRegister Team"
 * kind = #operation
 * code = #lastn-encounters
@@ -189,7 +189,7 @@ Title: "Group $members (OpenMRS FHIR2)"
 * url = "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/Group-members"
 * name = "GroupMembers"
 * title = "Group $members (OpenMRS FHIR2)"
-* status = #draft
+* status = #active
 * publisher = "Lesotho eRegister Team"
 * kind = #operation
 * code = #members
@@ -212,7 +212,7 @@ Title: "Encounter named query encountersWithMedicationRequests"
 * url = "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/Encounter-encountersWithMedicationRequests"
 * name = "EncountersWithMedicationRequests"
 * title = "Encounter named query encountersWithMedicationRequests"
-* status = #draft
+* status = #active
 * publisher = "Lesotho eRegister Team"
 * kind = #query
 * code = #encountersWithMedicationRequests
