@@ -1,7 +1,7 @@
 {
   "resourceType": "CapabilityStatement",
   "id": "openmrs-fhir2-r4-server",
-  "url": "http://example.org/fhir/ig/openmrs-fhir2/CapabilityStatement/openmrs-fhir2-r4-server",
+  "url": "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/CapabilityStatement/openmrs-fhir2-r4-server",
   "version": "0.1.0",
   "name": "OpenMRSFHIR2R4Server",
   "title": "OpenMRS FHIR2 1.9.0 R4 Server",
@@ -437,11 +437,11 @@
           "operation": [
             {
               "name": "everything",
-              "definition": "http://example.org/fhir/ig/openmrs-fhir2/OperationDefinition/Encounter-everything"
+              "definition": "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/Encounter-everything"
             },
             {
               "name": "encountersWithMedicationRequests",
-              "definition": "http://example.org/fhir/ig/openmrs-fhir2/OperationDefinition/Encounter-encountersWithMedicationRequests"
+              "definition": "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/Encounter-encountersWithMedicationRequests"
             }
           ]
         },
@@ -515,7 +515,7 @@
           "operation": [
             {
               "name": "members",
-              "definition": "http://example.org/fhir/ig/openmrs-fhir2/OperationDefinition/Group-members"
+              "definition": "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/Group-members"
             }
           ]
         },
@@ -971,7 +971,7 @@
           "operation": [
             {
               "name": "lastn-encounters",
-              "definition": "http://example.org/fhir/ig/openmrs-fhir2/OperationDefinition/Observation-lastn-encounters"
+              "definition": "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/Observation-lastn-encounters"
             },
             {
               "name": "lastn",

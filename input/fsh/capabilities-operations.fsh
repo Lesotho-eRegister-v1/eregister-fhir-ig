@@ -8,7 +8,7 @@ Instance: labonfhir-client
 InstanceOf: CapabilityStatement
 Usage: #definition
 Title: "Lab on FHIR 1.3.1 (client)"
-* url = "http://example.org/fhir/ig/openmrs-fhir2/CapabilityStatement/labonfhir-client"
+* url = "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/CapabilityStatement/labonfhir-client"
 * name = "LabOnFHIRClient"
 * title = "Lab on FHIR 1.3.1 (client)"
 * status = #draft
@@ -47,7 +47,7 @@ Instance: lis-server-requirements
 InstanceOf: CapabilityStatement
 Usage: #definition
 Title: "LIS FHIR server requirements"
-* url = "http://example.org/fhir/ig/openmrs-fhir2/CapabilityStatement/lis-server-requirements"
+* url = "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/CapabilityStatement/lis-server-requirements"
 * name = "LISServerRequirements"
 * title = "LIS FHIR server requirements"
 * status = #draft
@@ -105,7 +105,7 @@ Instance: Encounter-everything
 InstanceOf: OperationDefinition
 Usage: #definition
 Title: "Encounter $everything (OpenMRS FHIR2)"
-* url = "http://example.org/fhir/ig/openmrs-fhir2/OperationDefinition/Encounter-everything"
+* url = "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/Encounter-everything"
 * name = "EncounterEverything"
 * title = "Encounter $everything (OpenMRS FHIR2)"
 * status = #draft
@@ -127,7 +127,7 @@ Instance: Observation-lastn-encounters
 InstanceOf: OperationDefinition
 Usage: #definition
 Title: "Observation $lastn-encounters (OpenMRS FHIR2)"
-* url = "http://example.org/fhir/ig/openmrs-fhir2/OperationDefinition/Observation-lastn-encounters"
+* url = "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/Observation-lastn-encounters"
 * name = "ObservationLastnEncounters"
 * title = "Observation $lastn-encounters (OpenMRS FHIR2)"
 * status = #draft
@@ -175,7 +175,7 @@ Instance: Group-members
 InstanceOf: OperationDefinition
 Usage: #definition
 Title: "Group $members (OpenMRS FHIR2)"
-* url = "http://example.org/fhir/ig/openmrs-fhir2/OperationDefinition/Group-members"
+* url = "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/Group-members"
 * name = "GroupMembers"
 * title = "Group $members (OpenMRS FHIR2)"
 * status = #draft
@@ -197,7 +197,7 @@ Instance: Encounter-encountersWithMedicationRequests
 InstanceOf: OperationDefinition
 Usage: #definition
 Title: "Encounter named query encountersWithMedicationRequests"
-* url = "http://example.org/fhir/ig/openmrs-fhir2/OperationDefinition/Encounter-encountersWithMedicationRequests"
+* url = "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/Encounter-encountersWithMedicationRequests"
 * name = "EncountersWithMedicationRequests"
 * title = "Encounter named query encountersWithMedicationRequests"
 * status = #draft

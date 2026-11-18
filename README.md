@@ -23,6 +23,10 @@ A FHIR R4 implementation guide (FHIR Shorthand + HL7 IG Publisher). It describes
 | `input/pagecontent/` | Narrative pages (architecture, API, query cookbook, lab workflow, terminology, findings) |
 | `input/images/` | Diagrams |
 
+## Published site
+
+https://lesotho-eregister-v1.github.io/eregister-fhir-ig/ (built by `.github/workflows/publish-ig.yml` on every push to `main`; enable it once under Settings → Pages → Source: GitHub Actions).
+
 ## Build
 
 ```bash
@@ -36,5 +40,5 @@ npx fsh-sushi build .          # writes fsh-generated/
 
 ## Before sharing outside the team
 
-- Replace the placeholder canonical `http://example.org/fhir/ig/openmrs-fhir2`, the package id `example.openmrs.fhir2.lab` and the publisher in `sushi-config.yaml`.
+- Set the publisher name in `sushi-config.yaml` (still a placeholder).
 - Credentials, the LIS host and the LIS service-user UUID are masked in the pages. Keep it that way.

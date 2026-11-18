@@ -1,7 +1,7 @@
 # SUSHI configuration for the OpenMRS FHIR2 + Lab on FHIR implementation guide.
-# Before publishing for real: replace the example.org canonical, the package id and the publisher.
-id: example.openmrs.fhir2.lab
-canonical: http://example.org/fhir/ig/openmrs-fhir2
+# Before release: set the publisher name.
+id: ls.eregister.fhir.ig
+canonical: https://lesotho-eregister-v1.github.io/eregister-fhir-ig
 name: OpenMRSFHIR2LabIG
 title: OpenMRS FHIR2 and Lab on FHIR Implementation Guide
 description: >-
