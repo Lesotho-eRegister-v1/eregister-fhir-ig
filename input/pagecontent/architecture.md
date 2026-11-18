@@ -7,31 +7,37 @@
 ### How the three modules fit together
 
 ```
-                         ┌────────────────────────────── OpenMRS / Bahmni (Tomcat) ──────────────────────────────┐
-  FHIR clients           │                                                                                         │
-  (Bahmni apps, curl,    │   /openmrs/ws/fhir2/R4  ──►  FhirRestServlet (HAPI RestfulServer)                        │
-   OpenHIM, LIS, …) ─────┼──►/openmrs/ws/fhir2/R3  ──►  FhirR3RestServlet (STU3 ⇄ R4 conversion)                    │
-                         │          │                                                                              │
-                         │          ▼                                                                              │
-                         │   @R4Provider ResourceProviders ◄── Bahmni FHIR2 Addl Extension adds/overrides providers  │
-                         │          │                                                                              │
-                         │          ▼                                                                              │
-                         │   Fhir*Service (interfaces)  ◄──────────── LabOnFHIR calls these in-process              │
-                         │      │            │                         (FhirTaskService, FhirObservationService,     │
-                         │      ▼            ▼                          FhirDiagnosticReportService, …)              │
-                         │  Translators     DAOs (Hibernate Criteria / SearchQuery)                                 │
-                         │      └──────┬─────┘                                                                     │
-                         │             ▼                                                                           │
-                         │       OpenMRS DB (patient, encounter, obs, orders, test_order, fhir_task, …)            │
-                         │                                                                                         │
-                         │   LabOnFHIR: Event listeners ─► LabOrderHandler ─► FHIR2 TaskService                     │
-                         │              Scheduler tasks (FetchTaskUpdates / RetryFailedTasks)                       │
-                         │              HAPI IGenericClient ─────────────────────────────────────────────┐          │
-                         └─────────────────────────────────────────────────────────────────────────────┼──────────┘
-                                                                                                       │ FHIR R4 (JSON)
-                                                                                                       ▼
-                                                                    LIS HAPI FHIR server (labonfhir.lisUrl)
-                                                                    e.g. OpenELIS / DISA hapi-fhir-jpaserver
+                  ┌─ OpenMRS / Bahmni (Tomcat) ────────────────────────────────────────────────────────────────┐
+                  │                                                                                            │
+                  │                                                                                            │
+FHIR clients   ───┼────> /openmrs/ws/fhir2/R4 -> FhirRestServlet   (HAPI RestfulServer)                        │
+(Bahmni apps,  ───┼────> /openmrs/ws/fhir2/R3 -> FhirR3RestServlet (STU3 <-> R4 conversion)                    │
+ curl, OpenHIM,   │           │                                                                                │
+ LIS, ...)        │           v                                                                                │
+                  │      @R4Provider ResourceProviders  <-- Bahmni FHIR2 Addl Extension adds/overrides         │
+                  │           │                                                                                │
+                  │           v                                                                                │
+                  │      Fhir*Service (interfaces)      <-- LabOnFHIR calls these in-process                   │
+                  │           │                          (FhirTaskService, FhirObservationService,             │
+                  │           v                           FhirDiagnosticReportService, ...)                    │
+                  │      Translators   +   DAOs (Hibernate Criteria / SearchQuery)                             │
+                  │           │                                                                                │
+                  │           v                                                                                │
+                  │      OpenMRS DB (patient, encounter, obs, orders, test_order, fhir_task, ...)              │
+                  │                                                                                            │
+                  │      LabOnFHIR: event listeners -> LabOrderHandler -> FHIR2 TaskService                    │
+                  │                 scheduler tasks (FetchTaskUpdates / RetryFailedTasks)                      │
+                  │                 HAPI IGenericClient ────────────┐                                          │
+                  │                                                 │                                          │
+                  │                                                 │                                          │
+                  └─────────────────────────────────────────────────┼──────────────────────────────────────────┘
+                                                                    │
+                                                                    │ FHIR R4 (JSON)
+                                                                    v
+                                              ┌────────────────────────────────────────────┐
+                                              │ LIS HAPI FHIR server (labonfhir.lisUrl)    │
+                                              │ e.g. OpenELIS / DISA hapi-fhir-jpaserver   │
+                                              └────────────────────────────────────────────┘
 ```
 
 ### FHIR2 module (1.9.0)

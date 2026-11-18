@@ -208,20 +208,22 @@ Writes to OpenMRS (through FHIR2 services, not over HTTP):
 ### Summary: resource flow
 
 ```
-            OpenMRS (FHIR2 store)                                   LIS HAPI FHIR server
- ┌───────────────────────────────────┐   PUT (transaction)   ┌──────────────────────────────┐
- │ Task (requested)                  │ ────────────────────► │ Task                         │
- │ Patient, Practitioner(owner)      │ ────────────────────► │ Patient, Practitioner        │
- │ Encounter, Location               │ ────────────────────► │ Encounter, Location          │
- │ ServiceRequest (lab order)        │ ────────────────────► │ ServiceRequest               │
- │ Observation (supportingInfo, DISA)│ ────────────────────► │ Observation                  │
- │ DiagnosticReport (+ result Obs)   │ ────────────────────► │ DiagnosticReport             │
- │                                   │                       │                              │
- │                                   │  GET Task?status=completed                          │
- │ Task (completed, output=DR)  ◄────│ ◄──────────────────── │ Task (completed)             │
- │ DiagnosticReport             ◄────│  GET DiagnosticReport?_include=result,subject       │
- │ Observation (results + VL)   ◄────│ ◄──────────────────── │ DiagnosticReport+Observation │
- └───────────────────────────────────┘                       └──────────────────────────────┘
+┌─ OpenMRS (FHIR2 store) ────────────┐                                                ┌─ LIS HAPI FHIR server ─────────┐
+│                                    │            PUT (transaction bundle)            │                                │
+│ Task (requested)                   │ ─────────────────────────────────────────────> │ Task                           │
+│ Patient, Practitioner (owner)      │ ─────────────────────────────────────────────> │ Patient, Practitioner          │
+│ Encounter, Location                │ ─────────────────────────────────────────────> │ Encounter, Location            │
+│ ServiceRequest (lab order)         │ ─────────────────────────────────────────────> │ ServiceRequest                 │
+│ Observation (supportingInfo)       │ ─────────────────────────────────────────────> │ Observation                    │
+│ DiagnosticReport (+ result Obs)    │ ─────────────────────────────────────────────> │ DiagnosticReport               │
+│                                    │                                                │                                │
+│                                    │           GET Task?status=completed            │                                │
+│ Task (completed, output=DR)        │ <───────────────────────────────────────────── │ Task (completed)               │
+│                                    │  GET DiagnosticReport?_include=result,subject  │                                │
+│ DiagnosticReport                   │ <───────────────────────────────────────────── │ DiagnosticReport               │
+│ Observation (results + VL)         │ <───────────────────────────────────────────── │ Observation                    │
+│                                    │                                                │                                │
+└────────────────────────────────────┘                                                └────────────────────────────────┘
 ```
 
 **Resource types sent to the HAPI server:** `Task`, `Patient`, `Practitioner`, `Encounter`, `ServiceRequest`,
