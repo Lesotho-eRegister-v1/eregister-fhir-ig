@@ -12,6 +12,7 @@ Title: "Lab on FHIR 1.3.1 (client)"
 * name = "LabOnFHIRClient"
 * title = "Lab on FHIR 1.3.1 (client)"
 * status = #draft
+* publisher = "Lesotho eRegister Team"
 * experimental = false
 * date = "2026-11-18"
 * kind = #capability
@@ -51,6 +52,7 @@ Title: "LIS FHIR server requirements"
 * name = "LISServerRequirements"
 * title = "LIS FHIR server requirements"
 * status = #draft
+* publisher = "Lesotho eRegister Team"
 * experimental = false
 * date = "2026-11-18"
 * kind = #requirements
@@ -109,6 +111,7 @@ Title: "Encounter $everything (OpenMRS FHIR2)"
 * name = "EncounterEverything"
 * title = "Encounter $everything (OpenMRS FHIR2)"
 * status = #draft
+* publisher = "Lesotho eRegister Team"
 * kind = #operation
 * code = #everything
 * description = "Returns the Encounter and the resources that belong to it (observations, orders, reports) as a searchset Bundle. FHIR2 handles Patient and Encounter $everything with one implementation."
@@ -131,6 +134,7 @@ Title: "Observation $lastn-encounters (OpenMRS FHIR2)"
 * name = "ObservationLastnEncounters"
 * title = "Observation $lastn-encounters (OpenMRS FHIR2)"
 * status = #draft
+* publisher = "Lesotho eRegister Team"
 * kind = #operation
 * code = #lastn-encounters
 * description = "OpenMRS-specific variant of $lastn: returns the observations from the patient's last N encounters, optionally filtered by category and code."
@@ -179,6 +183,7 @@ Title: "Group $members (OpenMRS FHIR2)"
 * name = "GroupMembers"
 * title = "Group $members (OpenMRS FHIR2)"
 * status = #draft
+* publisher = "Lesotho eRegister Team"
 * kind = #operation
 * code = #members
 * description = "Returns the members of an OpenMRS cohort (FHIR Group) as a Bundle."
@@ -201,6 +206,7 @@ Title: "Encounter named query encountersWithMedicationRequests"
 * name = "EncountersWithMedicationRequests"
 * title = "Encounter named query encountersWithMedicationRequests"
 * status = #draft
+* publisher = "Lesotho eRegister Team"
 * kind = #query
 * code = #encountersWithMedicationRequests
 * description = "Named query (GET [base]/Encounter?_query=encountersWithMedicationRequests) used by pharmacy work lists: encounters that contain medication requests."

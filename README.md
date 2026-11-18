@@ -40,5 +40,4 @@ npx fsh-sushi build .          # writes fsh-generated/
 
 ## Before sharing outside the team
 
-- Set the publisher name in `sushi-config.yaml` (still a placeholder).
 - Credentials, the LIS host and the LIS service-user UUID are masked in the pages. Keep it that way.

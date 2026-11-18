@@ -10,6 +10,7 @@ Title: "OpenMRS Encounter Tag (fragment)"
 Description: "Meta tag that FHIR2 puts on Encounter resources to show whether the FHIR Encounter came from an OpenMRS `encounter` row or a `visit` row. Searchable with `_tag`."
 * ^url = $encounter-tag
 * ^status = #active
+* ^publisher = "Lesotho eRegister Team"
 * ^content = #fragment
 * ^experimental = false
 * ^caseSensitive = true
@@ -27,6 +28,7 @@ a trailing slash; see [Findings](findings.html).
 """
 * ^url = $disa
 * ^status = #active
+* ^publisher = "Lesotho eRegister Team"
 * ^content = #fragment
 * ^experimental = false
 * ^caseSensitive = true
@@ -52,6 +54,7 @@ Id: labonfhir-supporting-info-codes
 Title: "Lab on FHIR supporting-information codes"
 Description: "DISA codes that Lab on FHIR adds to clinical-context observations sent with a lab order."
 * ^status = #active
+* ^publisher = "Lesotho eRegister Team"
 * ^experimental = false
 * $disa#CTREA
 * $disa#PTREA
@@ -64,6 +67,7 @@ Id: labonfhir-viral-load-trigger-codes
 Title: "Lab on FHIR viral-load trigger codes"
 Description: "Result codes that make Lab on FHIR derive the Lesotho HIV viral-load observations when importing results."
 * ^status = #active
+* ^publisher = "Lesotho eRegister Team"
 * ^experimental = false
 * $loinc#20447-9 "HIV 1 RNA [#/volume] (viral load) in Serum or Plasma by Probe and target amplification method"
 * $loinc#70241-5
@@ -82,7 +86,7 @@ Description: "Identifier system that FHIR2 puts on every Task. The value is the 
 * status = #active
 * kind = #identifier
 * date = "2026-11-18"
-* publisher = "OpenMRS FHIR2 module (documented here)"
+* publisher = "Lesotho eRegister Team"
 * uniqueId[0].type = #uri
 * uniqueId[0].value = "http://fhir.openmrs.org/ext/task/identifier"
 * uniqueId[0].preferred = true
@@ -97,7 +101,7 @@ Description: "Identifier system that Lab on FHIR registers in FHIR2 at startup f
 * status = #active
 * kind = #identifier
 * date = "2026-11-18"
-* publisher = "Lab on FHIR module (documented here)"
+* publisher = "Lesotho eRegister Team"
 * uniqueId[0].type = #uri
 * uniqueId[0].value = "http://openelis-global.org/pat_nationalId"
 * uniqueId[0].preferred = true

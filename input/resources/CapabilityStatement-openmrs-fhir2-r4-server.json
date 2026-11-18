@@ -8,7 +8,7 @@
   "status": "draft",
   "experimental": false,
   "date": "2026-11-18",
-  "publisher": "Draft (set publisher before release)",
+  "publisher": "Lesotho eRegister Team",
   "description": "What the OpenMRS FHIR2 module 1.9.0-SNAPSHOT serves at /openmrs/ws/fhir2/R4. Generated from the live server's GET /metadata on 2026-11-18. It matches the analysis of the module jar. The Bahmni FHIR2 Additional Extension is not loaded on this instance.",
   "kind": "capability",
   "software": {

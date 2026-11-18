@@ -48,5 +48,5 @@ Until it is added, values on these pages are the module **defaults**.
 
 ### Status
 
-Draft 0.1.0. Canonical URL: `https://lesotho-eregister-v1.github.io/eregister-fhir-ig` (published from the [eregister-fhir-ig](https://github.com/Lesotho-eRegister-v1/eregister-fhir-ig) repository). The publisher name is still a placeholder.
+Draft 0.1.0. Canonical URL: `https://lesotho-eregister-v1.github.io/eregister-fhir-ig` (published from the [eregister-fhir-ig](https://github.com/Lesotho-eRegister-v1/eregister-fhir-ig) repository).
 All examples are synthetic.

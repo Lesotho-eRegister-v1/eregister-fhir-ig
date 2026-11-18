@@ -14,6 +14,7 @@ concept filter, and sends to the LIS in a transaction Bundle. The LIS updates th
 adds an output that points at the DiagnosticReport holding the results.
 """
 * ^status = #active
+* ^publisher = "Lesotho eRegister Team"
 * ^experimental = false
 * identifier 1..* MS
 * identifier ^slicing.discriminator.type = #value
@@ -55,6 +56,7 @@ Id: lab-order-service-request
 Title: "Lab Order ServiceRequest"
 Description: "A lab test order as FHIR2 1.9.0 serves it from the OpenMRS `test_order` table. The ServiceRequest id is the OpenMRS order UUID."
 * ^status = #active
+* ^publisher = "Lesotho eRegister Team"
 * ^experimental = false
 * status MS
 * intent = #order (exactly)
@@ -79,6 +81,7 @@ Id: lab-result-diagnostic-report
 Title: "Lab Result DiagnosticReport"
 Description: "The DiagnosticReport that the LIS returns and that Lab on FHIR saves in OpenMRS (FHIR2 `fhir_diagnostic_report` table). Its results are re-created as OpenMRS observations."
 * ^status = #active
+* ^publisher = "Lesotho eRegister Team"
 * ^experimental = false
 * status MS
 * code MS
@@ -97,6 +100,7 @@ Id: lab-result-observation
 Title: "Lab Result Observation"
 Description: "A lab result observation imported from the LIS and saved as an OpenMRS obs, linked to the order's encounter."
 * ^status = #active
+* ^publisher = "Lesotho eRegister Team"
 * ^experimental = false
 * status MS
 * code MS
@@ -118,6 +122,7 @@ It contains the Task and everything the Task references through `_include` (Pati
 ServiceRequest), the encounter's Location, and any supporting Observations / DiagnosticReports of the ServiceRequest.
 """
 * ^status = #active
+* ^publisher = "Lesotho eRegister Team"
 * ^experimental = false
 * type = #transaction (exactly)
 * entry 1..* MS

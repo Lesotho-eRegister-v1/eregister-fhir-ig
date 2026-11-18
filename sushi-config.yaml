@@ -1,5 +1,4 @@
 # SUSHI configuration for the OpenMRS FHIR2 + Lab on FHIR implementation guide.
-# Before release: set the publisher name.
 id: ls.eregister.fhir.ig
 canonical: https://lesotho-eregister-v1.github.io/eregister-fhir-ig
 name: OpenMRSFHIR2LabIG
@@ -16,7 +15,7 @@ releaseLabel: ci-build
 license: CC0-1.0
 jurisdiction: urn:iso:std:iso:3166#LS "Lesotho"
 publisher:
-  name: Draft (set publisher before release)
+  name: Lesotho eRegister Team
 
 dependencies: {}
 
