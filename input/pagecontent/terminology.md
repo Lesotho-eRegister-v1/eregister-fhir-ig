@@ -10,12 +10,15 @@ Lab on FHIR relies on this: its transaction uses `PUT <type>/<uuid>`, so the LIS
 | `http://fhir.openmrs.org/ext/task/identifier` | `Task.identifier` | The Task's OpenMRS UUID. Lab on FHIR searches the LIS with `identifier=<system>|` to find Tasks that came from OpenMRS. See [NamingSystem](NamingSystem-openmrs-task-identifier.html) |
 | `http://openelis-global.org/pat_nationalId` (default of `labonfhir.lisIdentifierSystem.url`) | `Patient.identifier` | Registered by Lab on FHIR at startup as the FHIR system for patient identifier type `labonfhir.openmrsPatientIdentifier.uuid`. See [NamingSystem](NamingSystem-openlis-patient-identifier.html) |
 | Rows of the FHIR2 table `fhir_patient_identifier_system` | `Patient.identifier` | Any other identifier type mapped to a FHIR system by the implementation. Unmapped types are sent without a system |
+| *(no system)* | `Patient.identifier` | **Live:** every patient identifier is served without a `system`. The type is identified by `type.coding.code` (identifier-type UUID) and `type.text`: *Patient Identifier* (`81433852-3f10-11e4-adec-0800271c1b75`, use `official`), *HIV Program ID* (`5c1e8ae2-33c6-11e8-8236-0242ac110002`), *File Number* (`d2084c23-edae-4b0f-98a2-cbcdb6708294`), *National ID* (`0d2ac572-8de3-46c8-9976-1f78899c599f`). The OpenLIS system above is never applied ([Findings](findings.html) L7). Search with `identifier=<value>` |
+| `ServiceReq_id`, `Facility_name`, `Facility_code` | `ServiceRequest.identifier` | Customised FHIR2. Label systems, not URIs ([Findings](findings.html) F2) |
+| `eRegister Lab order number` | `ServiceRequest.requisition` | Customised FHIR2. eRegister lab order number. Not a valid uri ([Findings](findings.html) F1) |
 | `http://fhir.openmrs.org/ext/provider/identifier` | `Practitioner.identifier` | OpenMRS provider identifier |
 | `http://fhir.openmrs.org/ext/user/identifier` | `Practitioner.identifier` | OpenMRS username, for practitioners backed by a user |
 
 ### Code systems
 
-The rows marked with a FHIR2 URL come from constants in the FHIR2 1.9.0 module and will be checked against live resources once authenticated access is available.
+Checked against live resources on 2026-11-18 unless marked *not observed*.
 
 | System | Where it appears | Notes |
 |---|---|---|
@@ -23,9 +26,13 @@ The rows marked with a FHIR2 URL come from constants in the FHIR2 1.9.0 module a
 | Concept-source URLs in the FHIR2 table `fhir_concept_source`, e.g. `http://loinc.org`, `http://snomed.info/sct`, CIEL | Additional codings, one per concept mapping | A mapping only appears when its concept source has a row in `fhir_concept_source` |
 | `http://fhir.openmrs.org/ext/encounter-tag` | `Encounter.meta.tag` | `encounter` or `visit`. See [CodeSystem](CodeSystem-openmrs-encounter-tag.html) |
 | `http://fhir.openmrs.org/ext/location-tag` | `Location.meta.tag` | OpenMRS location tags (e.g. *Login Location*) |
-| `http://fhir.openmrs.org/code-system/visit-type` | `Encounter.type` for visits | Visit type UUIDs |
-| `http://terminology.hl7.org/CodeSystem/observation-category` | `Observation.category` | Derived from the concept class (table `fhir_observation_category_map`) |
-| `http://health.gov.ls/laboratory-services` | Supporting observations sent to the LIS; derived viral-load observations | Lesotho DISA codes. See [CodeSystem](CodeSystem-lsmoh-disa-lab-services.html) and the slash issue on [Findings](findings.html) |
+| `http://fhir.openmrs.org/code-system/encounter-type` | `Encounter.type` for encounters | Encounter type UUIDs (lab orders: *Consultation* `81852aee-3f10-11e4-adec-0800271c1b75`) |
+| `http://fhir.openmrs.org/code-system/visit-type` | `Encounter.type` for visits | Visit type UUIDs (*not observed*) |
+| `https://openconceptlab.org/orgs/CIEL/sources/CIEL` | Concept mappings | CIEL codes (e.g. `162240` ART regimen, `856` viral load) |
+| `http://terminology.hl7.org/CodeSystem/v2-0074` | `DiagnosticReport.category` | `LAB` on every lab report |
+| `http://terminology.hl7.org/CodeSystem/observation-category` | `Observation.category` | Derived from the concept class (table `fhir_observation_category_map`). **Live:** many observations have no category (e.g. all imported lab results) |
+| `http://health.gov.ls/laboratory-services/` (trailing slash) | Order, specimen, result and supporting-observation codings served by FHIR2 | Lesotho DISA codes from the `LSMOH DISA` concept source. This is the form on the wire for every DISA coding FHIR2 serves. See [CodeSystem](CodeSystem-lsmoh-disa-lab-services.html) |
+| `http://health.gov.ls/laboratory-services` (no slash) | Lab on FHIR's send-time codings (`CTREA`, `PTREA`, `PVLD`, `FCD4`, `LCD4`) | Exists only in the outgoing transaction. See the slash issue on [Findings](findings.html) L1 |
 
 ### Extension URLs emitted by FHIR2 1.9.0
 
@@ -45,5 +52,7 @@ These URLs are defined as constants in the FHIR2 module. This guide lists them s
 
 ### Lab on FHIR value sets
 
-* [Supporting-information codes](ValueSet-labonfhir-supporting-info-codes.html): DISA codes added to clinical-context observations sent with an order (`CTREA`, `PTREA`, `PVLD`, `FCD4`, `LCD4`).
+* [Lab order test codes](ValueSet-lab-order-test-codes.html): codes on `ServiceRequest.code`, `DiagnosticReport.code` and `Task.output.type` (observed).
+* [Lab order supporting-information codes](ValueSet-lab-order-supporting-info-codes.html): codes on the observations referenced from `ServiceRequest.supportingInfo` (observed).
+* [Send-time supporting-information codes](ValueSet-labonfhir-supporting-info-codes.html): DISA codes Lab on FHIR adds while sending (`CTREA`, `PTREA`, `PVLD`, `FCD4`, `LCD4`; from code analysis).
 * [Viral-load trigger codes](ValueSet-labonfhir-viral-load-trigger-codes.html): result codes that make Lab on FHIR derive the Lesotho viral-load observations.

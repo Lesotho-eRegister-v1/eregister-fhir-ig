@@ -10,7 +10,17 @@ This list was extracted by loading every `providers/r4/*Provider` class from
 | STU3 | `http(s)://<host>/openmrs/ws/fhir2/R3` |
 | Capability statement | `GET <base>/metadata` |
 
-Every endpoint needs authentication: HTTP Basic with an OpenMRS user, or an OpenMRS `JSESSIONID` cookie.
+Every endpoint except `GET <base>/metadata` needs authentication: HTTP Basic with an OpenMRS user, or an OpenMRS `JSESSIONID` cookie.
+Unauthenticated calls get `401`.
+
+> **The live `/metadata` does not say this.** The server's CapabilityStatement has no `rest.security` element, so a client
+> cannot discover from it that authentication is required. The [copy in this guide](CapabilityStatement-openmrs-fhir2-r4-server.html)
+> adds `rest.security` (service `Basic`) by hand.
+
+> **Operation links in `/metadata` follow the caller's host.** `rest.resource.operation.definition` URLs (for example
+> `http://<host>/openmrs/ws/fhir2/R4/OperationDefinition/Observation-t-lastn`) are built from the host of the request that
+> generated the statement, and HAPI caches the statement for a while. A client can therefore see another caller's host
+> (for example an internal IP) in those links. Resolve them against your own base URL instead.
 
 ### Summary matrix (R4)
 
@@ -24,7 +34,7 @@ Legend: R = read (`GET /Type/{id}`), S = search, C = create (`POST`), U = update
 | 2 | **Person** | ✔ | ✔ | ✔ | ✔ | ✔ | |
 | 3 | **RelatedPerson** | ✔ | ✔ | | | | |
 | 4 | **Practitioner** | ✔ | ✔ | ✔ | ✔ | ✔ | |
-| 5 | **Encounter** | ✔ | ✔ | ✔ | ✔ | ✔ | `Encounter/{id}/$everything`; named search `_query=encountersWithMedicationRequests` |
+| 5 | **Encounter** | ✔ | ✔ | ✔ | ✔ | ✔ | `Encounter/$everything`, `Encounter/{id}/$everything`; named search `_query=encountersWithMedicationRequests` |
 | 6 | **Observation** | ✔ | ✔ | ✔ | | ✔ | `Observation/$lastn`, `Observation/$lastn-encounters` |
 | 7 | **Location** | ✔ | ✔ | ✔ | ✔ | ✔ | |
 | 8 | **Condition** | ✔ | ✔ | ✔ | ✔ | ✔ | |
@@ -33,14 +43,29 @@ Legend: R = read (`GET /Type/{id}`), S = search, C = create (`POST`), U = update
 | 11 | **ServiceRequest** | ✔ | ✔ | | | | |
 | 12 | **Task** | ✔ | ✔ | ✔ | ✔ | ✔ | |
 | 13 | **Medication** | ✔ | ✔ | ✔ | ✔ | ✔ | |
-| 14 | **MedicationRequest** | ✔ | ✔ | | | | |
+| 14 | **MedicationRequest** | ✔ | ✔ | | | | Unfiltered search fails with HTTP 500 on the live instance; see [Findings](findings.html) |
 | 15 | **MedicationDispense** | ✔ | ✔ | ✔ | ✔ | ✔ | (needs OpenMRS ≥ 2.6) |
 | 16 | **Immunization** | ✔ | ✔ | ✔ | ✔ | ✔ | |
 | 17 | **Group** | ✔ | ✔ | ✔ | ✔ | ✔ | `Group/{id}/$members` |
 | 18 | **ValueSet** | ✔ | ✔ | | | | |
+| 19 | **OperationDefinition** | ✔ | | | | | Read only. Serves the server's definitions of the operations above (ids below) |
 
 STU3 (`/R3`) exposes the same set **except Immunization and ServiceRequest**. It adds **ProcedureRequest** (R/S),
 the STU3 equivalent of ServiceRequest. The R3 Group provider has no search.
+**None of the extended operations exist on `/R3`**: no `$everything`, `$lastn`, `$lastn-encounters`, `$members` or
+`_query=encountersWithMedicationRequests`. Use `/R4` for them.
+
+#### Server OperationDefinition ids (live)
+
+| Operation | `GET <base>/OperationDefinition/…` | Guide definition |
+|---|---|---|
+| Patient / Encounter `$everything` | `EncounterPatient-it-everything` (one definition for both; type and instance level; no input parameters) | [EncounterPatient-everything](OperationDefinition-EncounterPatient-everything.html) |
+| Observation `$lastn` | `Observation-t-lastn` | Standard FHIR [Observation-lastn](http://hl7.org/fhir/R4/operation-observation-lastn.html) |
+| Observation `$lastn-encounters` | `Observation-t-lastn-encounters` | [Observation-lastn-encounters](OperationDefinition-Observation-lastn-encounters.html) |
+| Group `$members` | `Group-i-members` | [Group-members](OperationDefinition-Group-members.html) |
+| `_query=encountersWithMedicationRequests` | `Encounter-query-encountersWithMedicationRequests` (params `date`, `status`, `patientSearchTerm`) | [Encounter-encountersWithMedicationRequests](OperationDefinition-Encounter-encountersWithMedicationRequests.html) |
+
+The server declares every operation parameter with type `string`, whatever its search type.
 
 ### Search parameters per resource (R4)
 

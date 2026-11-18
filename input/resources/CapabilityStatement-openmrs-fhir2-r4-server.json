@@ -9,7 +9,7 @@
   "experimental": false,
   "date": "2026-11-18",
   "publisher": "Lesotho eRegister Team",
-  "description": "What the OpenMRS FHIR2 module 1.9.0-SNAPSHOT serves at /openmrs/ws/fhir2/R4. Generated from the live server's GET /metadata on 2026-11-18. It matches the analysis of the module jar. The Bahmni FHIR2 Additional Extension is not loaded on this instance.",
+  "description": "What the OpenMRS FHIR2 module 1.9.0-SNAPSHOT serves at /openmrs/ws/fhir2/R4. Generated from the live server's GET /metadata on 2026-11-18. It matches the analysis of the module jar. The Bahmni FHIR2 Additional Extension is not loaded on this instance. Differences from the live statement: rest.security was added (the server omits it), and operation definition URLs point to this guide instead of the server (the server builds them from the requesting host).",
   "kind": "capability",
   "software": {
     "name": "OpenMRS FHIR2 module (HAPI FHIR 5.4.0)",
@@ -36,7 +36,7 @@
             ]
           }
         ],
-        "description": "HTTP Basic authentication against OpenMRS users; privileges are enforced per resource by OpenMRS core."
+        "description": "HTTP Basic authentication against OpenMRS users (or an OpenMRS JSESSIONID cookie); privileges are enforced per resource by OpenMRS core. Note: the server's own GET /metadata does NOT contain rest.security; this element was added by the guide authors. Only /metadata is reachable without authentication."
       },
       "resource": [
         {
@@ -437,7 +437,7 @@
           "operation": [
             {
               "name": "everything",
-              "definition": "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/Encounter-everything"
+              "definition": "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/EncounterPatient-everything"
             },
             {
               "name": "encountersWithMedicationRequests",
@@ -980,6 +980,55 @@
           ]
         },
         {
+          "type": "OperationDefinition",
+          "profile": "http://hl7.org/fhir/StructureDefinition/OperationDefinition",
+          "documentation": "Read-only. Serves the definitions of the extended operations listed in this statement (e.g. OperationDefinition/EncounterPatient-it-everything). Also present on /R3.",
+          "interaction": [
+            {
+              "code": "read"
+            }
+          ],
+          "searchInclude": [
+            "*"
+          ],
+          "searchRevInclude": [
+            "AllergyIntolerance:patient",
+            "AllergyIntolerance:subject",
+            "Condition:patient",
+            "Condition:subject",
+            "DiagnosticReport:encounter",
+            "DiagnosticReport:patient",
+            "DiagnosticReport:result",
+            "DiagnosticReport:subject",
+            "Encounter:location",
+            "Encounter:participant",
+            "Encounter:patient",
+            "Encounter:subject",
+            "Group:managing-entity",
+            "Immunization:patient",
+            "Location:partof",
+            "MedicationDispense:context",
+            "MedicationDispense:patient",
+            "MedicationDispense:prescription",
+            "MedicationDispense:subject",
+            "MedicationRequest:encounter",
+            "MedicationRequest:medication",
+            "MedicationRequest:patient",
+            "MedicationRequest:requester",
+            "MedicationRequest:subject",
+            "Observation:encounter",
+            "Observation:has-member",
+            "Observation:patient",
+            "Observation:subject",
+            "ServiceRequest:encounter",
+            "ServiceRequest:patient",
+            "ServiceRequest:requester",
+            "ServiceRequest:subject",
+            "Task:based-on",
+            "Task:owner"
+          ]
+        },
+        {
           "type": "Patient",
           "profile": "http://hl7.org/fhir/StructureDefinition/Patient",
           "interaction": [
@@ -1085,7 +1134,7 @@
           "operation": [
             {
               "name": "everything",
-              "definition": "http://hl7.org/fhir/OperationDefinition/Patient-everything"
+              "definition": "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/EncounterPatient-everything"
             }
           ]
         },

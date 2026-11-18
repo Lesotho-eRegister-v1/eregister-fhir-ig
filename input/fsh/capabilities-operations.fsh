@@ -103,21 +103,28 @@ Title: "LIS FHIR server requirements"
 * rest[0].resource[7].interaction[0].code = #update
 * rest[0].resource[7].updateCreate = true
 
-Instance: Encounter-everything
+Instance: EncounterPatient-everything
 InstanceOf: OperationDefinition
 Usage: #definition
-Title: "Encounter $everything (OpenMRS FHIR2)"
-* url = "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/Encounter-everything"
-* name = "EncounterEverything"
-* title = "Encounter $everything (OpenMRS FHIR2)"
+Title: "Patient and Encounter $everything (OpenMRS FHIR2)"
+* url = "https://lesotho-eregister-v1.github.io/eregister-fhir-ig/OperationDefinition/EncounterPatient-everything"
+* name = "EncounterPatientEverything"
+* title = "Patient and Encounter $everything (OpenMRS FHIR2)"
 * status = #draft
 * publisher = "Lesotho eRegister Team"
 * kind = #operation
 * code = #everything
-* description = "Returns the Encounter and the resources that belong to it (observations, orders, reports) as a searchset Bundle. FHIR2 handles Patient and Encounter $everything with one implementation."
+* description = """
+Mirrors the server's own definition `OperationDefinition/EncounterPatient-it-everything`: FHIR2 handles Patient and
+Encounter `$everything` with one implementation, at type level (`Patient/$everything`, `Encounter/$everything`) and
+instance level (`Patient/{id}/$everything`, `Encounter/{id}/$everything`). The server declares no input parameters
+(the base FHIR `_since`, `start`, `end`, `_type` parameters are not advertised). Returns a searchset Bundle.
+R4 only: `/R3` does not offer this operation.
+"""
 * resource[0] = #Encounter
+* resource[1] = #Patient
 * system = false
-* type = false
+* type = true
 * instance = true
 * affectsState = false
 * parameter[0].name = #return
@@ -152,12 +159,12 @@ Title: "Observation $lastn-encounters (OpenMRS FHIR2)"
 * parameter[1].name = #patient
 * parameter[1].use = #in
 * parameter[1].min = 0
-* parameter[1].max = "1"
+* parameter[1].max = "*"
 * parameter[1].searchType = #reference
 * parameter[2].name = #subject
 * parameter[2].use = #in
 * parameter[2].min = 0
-* parameter[2].max = "1"
+* parameter[2].max = "*"
 * parameter[2].searchType = #reference
 * parameter[3].name = #category
 * parameter[3].use = #in
@@ -229,7 +236,8 @@ Title: "Encounter named query encountersWithMedicationRequests"
 * parameter[2].use = #in
 * parameter[2].min = 0
 * parameter[2].max = "1"
-* parameter[2].searchType = #token
+* parameter[2].searchType = #string
+* parameter[2].documentation = "Free-text patient name or identifier."
 * parameter[3].name = #return
 * parameter[3].use = #out
 * parameter[3].min = 1

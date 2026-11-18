@@ -41,7 +41,7 @@ fhir "$BASE/Patient?name=John"                                     # any name pa
 fhir "$BASE/Patient?given=John&family=Doe"
 fhir "$BASE/Patient?name:exact=John"
 fhir "$BASE/Patient?identifier=GAN200001"                          # any identifier type
-fhir "$BASE/Patient?identifier=http://openelis-global.org/pat_nationalId|12345"   # identifier system registered by LabOnFHIR
+fhir "$BASE/Patient?identifier=X0000000001/26"   # identifiers have no system on this instance; search by value only
 fhir "$BASE/Patient?gender=female&birthdate=ge1990-01-01&birthdate=le1999-12-31"
 fhir "$BASE/Patient?deceased=true"
 fhir "$BASE/Patient?death-date=ge2025-01-01"
@@ -121,7 +121,7 @@ fhir "$BASE/Observation?encounter=<encounter-uuid>"
 fhir "$BASE/Observation?encounter.type=<encounter-type-uuid>"
 fhir "$BASE/Observation?patient=<uuid>&code=5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"          # by concept uuid (weight)
 fhir "$BASE/Observation?patient=<uuid>&code=http://loinc.org|20447-9"                   # by mapping (HIV viral load)
-fhir "$BASE/Observation?patient=<uuid>&code=http://health.gov.ls/laboratory-services/|HIVTCVL"   # DISA code (Lesotho)
+fhir "$BASE/Observation?patient=<uuid>&code=http://health.gov.ls/laboratory-services/|HIVVL-HIVVM"   # DISA code (Lesotho): VL result in copies/ml
 fhir "$BASE/Observation?patient=<uuid>&category=laboratory"
 fhir "$BASE/Observation?patient=<uuid>&category=vital-signs"
 fhir "$BASE/Observation?patient=<uuid>&date=ge2026-01-01"
