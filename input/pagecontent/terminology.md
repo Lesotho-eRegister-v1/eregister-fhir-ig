@@ -10,6 +10,10 @@ Lab on FHIR relies on this: its transaction uses `PUT <type>/<uuid>`, so the LIS
 | `http://fhir.openmrs.org/ext/task/identifier` | `Task.identifier` | The Task's OpenMRS UUID. Lab on FHIR searches the LIS with `identifier=<system>|` to find Tasks that came from OpenMRS. See [NamingSystem](NamingSystem-openmrs-task-identifier.html) |
 | `http://openelis-global.org/pat_nationalId` (default of `labonfhir.lisIdentifierSystem.url`) | `Patient.identifier` | Registered by Lab on FHIR at startup as the FHIR system for patient identifier type `labonfhir.openmrsPatientIdentifier.uuid`. See [NamingSystem](NamingSystem-openlis-patient-identifier.html) |
 | Rows of the FHIR2 table `fhir_patient_identifier_system` | `Patient.identifier` | Any other identifier type mapped to a FHIR system by the implementation. Unmapped types are sent without a system |
+| `http://health.gov.ls/fhir/identifier/patient-identifier`, `…/national-id`, `…/hiv-program-id`, `…/new-hiv-program-id` | `Patient.identifier` | **Draft** ([Prescription Workflow](prescription-workflow.html)): proposed systems for the four identifier types the prescription push sends. To be added to `fhir_patient_identifier_system` |
+| `http://health.gov.ls/fhir/identifier/prescription` | `MedicationRequest.groupIdentifier` | **Draft**: prescription number (the OpenMRS encounter UUID shared by all drug lines) |
+| `http://health.gov.ls/fhir/identifier/order-number` | `MedicationRequest.identifier` | **Draft**: OpenMRS order number of one drug line |
+| `http://health.gov.ls/fhir/identifier/facility-code` | `Location.identifier` | **Draft**: facility code (location attribute *IdentifierSourceName* of the parent location) |
 | *(no system)* | `Patient.identifier` | **Live:** every patient identifier is served without a `system`. The type is identified by `type.coding.code` (identifier-type UUID) and `type.text`: *Patient Identifier* (`81433852-3f10-11e4-adec-0800271c1b75`, use `official`), *HIV Program ID* (`5c1e8ae2-33c6-11e8-8236-0242ac110002`), *File Number* (`d2084c23-edae-4b0f-98a2-cbcdb6708294`), *National ID* (`0d2ac572-8de3-46c8-9976-1f78899c599f`). The OpenLIS system above is never applied ([Findings](findings.html) L7). Search with `identifier=<value>` |
 | `ServiceReq_id`, `Facility_name`, `Facility_code` | `ServiceRequest.identifier` | Customised FHIR2. Label systems, not URIs ([Findings](findings.html) F2) |
 | `eRegister Lab order number` | `ServiceRequest.requisition` | Customised FHIR2. eRegister lab order number. Not a valid uri ([Findings](findings.html) F1) |
@@ -56,3 +60,10 @@ These URLs are defined as constants in the FHIR2 module. This guide lists them s
 * [Lab order supporting-information codes](ValueSet-lab-order-supporting-info-codes.html): codes on the observations referenced from `ServiceRequest.supportingInfo` (observed).
 * [Send-time supporting-information codes](ValueSet-labonfhir-supporting-info-codes.html): DISA codes Lab on FHIR adds while sending (`CTREA`, `PTREA`, `PVLD`, `FCD4`, `LCD4`; from code analysis).
 * [Viral-load trigger codes](ValueSet-labonfhir-viral-load-trigger-codes.html): result codes that make Lab on FHIR derive the Lesotho viral-load observations.
+
+### Bonolo prescription terminology (draft)
+
+The [Prescription Workflow](prescription-workflow.html) codes OpenMRS concepts by UUID under the proposed system
+`http://health.gov.ls/fhir/CodeSystem/eregister-concept` ([CodeSystem fragment](CodeSystem-eregister-concept.html)).
+Value sets: [pickup questions](ValueSet-bonolo-pickup-questions.html), [pickup sites](ValueSet-bonolo-pickup-sites.html),
+[pickup types](ValueSet-bonolo-pickup-types.html), [pickup districts](ValueSet-bonolo-pickup-districts.html).

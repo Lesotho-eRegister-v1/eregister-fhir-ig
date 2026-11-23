@@ -7,8 +7,10 @@ description: >-
   Documents the FHIR R4 API served by the OpenMRS FHIR2 module 1.9.0 and the FHIR-based laboratory
   workflow implemented by the Lab on FHIR module 1.3.1 (eRegister / DISA LIS), as deployed on the
   Bahmni instance. Built from analysis of the module builds and the live server's capability statement.
+  Also records the agreed (draft, not yet implemented) design for sending Bonolo Health prescriptions to the
+  HAPI FHIR server and reading dispensing events back.
 status: active
-version: 1.0.1
+version: 1.1.0
 fhirVersion: 4.0.1
 copyrightYear: 2026+
 releaseLabel: release
@@ -34,6 +36,8 @@ pages:
     title: Query Cookbook
   lab-workflow.md:
     title: Lab Workflow (LabOnFHIR)
+  prescription-workflow.md:
+    title: Prescription Workflow (draft design)
   terminology.md:
     title: Identifiers and Terminology
   findings.md:
@@ -50,6 +54,7 @@ menu:
     FHIR2 Server API: server.html
     Query Cookbook: queries.html
     Lab Workflow: lab-workflow.html
+    Prescription Workflow (draft): prescription-workflow.html
     Identifiers and Terminology: terminology.html
     Findings and Known Issues: findings.html
     Bahmni Extension: bahmni-extension.html

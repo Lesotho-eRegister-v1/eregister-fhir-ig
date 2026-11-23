@@ -13,3 +13,14 @@ Alias: $ciel = https://openconceptlab.org/orgs/CIEL/sources/CIEL
 Alias: $encounter-type = http://fhir.openmrs.org/code-system/encounter-type
 Alias: $location-tag = http://fhir.openmrs.org/ext/location-tag
 Alias: $provider-identifier = http://fhir.openmrs.org/ext/provider/identifier
+// --- Bonolo prescription workflow (draft, 2026-11-23)
+Alias: $eregister-concept = http://health.gov.ls/fhir/CodeSystem/eregister-concept
+Alias: $id-patient = http://health.gov.ls/fhir/identifier/patient-identifier
+Alias: $id-national = http://health.gov.ls/fhir/identifier/national-id
+Alias: $id-hiv = http://health.gov.ls/fhir/identifier/hiv-program-id
+Alias: $id-new-hiv = http://health.gov.ls/fhir/identifier/new-hiv-program-id
+Alias: $id-prescription = http://health.gov.ls/fhir/identifier/prescription
+Alias: $id-order-number = http://health.gov.ls/fhir/identifier/order-number
+Alias: $id-facility = http://health.gov.ls/fhir/identifier/facility-code
+Alias: $openmrs-medicine = http://fhir.openmrs.org/ext/medicine
+Alias: $contact-point-system = http://hl7.org/fhir/contact-point-system

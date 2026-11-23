@@ -8,6 +8,7 @@ This implementation guide describes the FHIR R4 interface of the Bahmni / OpenMR
 
 It is a *descriptive* guide. It documents what the software does today, so integrators, the LIS team and the implementation team work from the same facts.
 Where the behaviour looks wrong, the guide says so on the [Findings](findings.html) page instead of describing what the software should do.
+The one exception is the [Prescription Workflow](prescription-workflow.html) page, which records an agreed design; its artifacts have status *draft*.
 
 ### How this guide was produced
 
@@ -34,6 +35,7 @@ Until it is added, values on these pages are the module **defaults**.
 | [FHIR2 Server API](server.html) | The 18 R4 resources: interactions, search parameters, includes, operations |
 | [Query Cookbook](queries.html) | Copy-paste `curl` queries for browsing every resource |
 | [Lab Workflow](lab-workflow.html) | What Lab on FHIR sends to and reads from the LIS, with profiles and examples |
+| [Prescription Workflow (draft)](prescription-workflow.html) | **Agreed design, not yet implemented**: Bonolo prescriptions sent to the HAPI server and dispensing read back, with draft profiles and examples |
 | [Identifiers and Terminology](terminology.html) | Identifier systems, code systems and extension URLs on the wire |
 | [Findings and Known Issues](findings.html) | Defects, risky defaults and security observations |
 | [Bahmni Extension](bahmni-extension.html) | What the extension would add once FHIR2 is upgraded |

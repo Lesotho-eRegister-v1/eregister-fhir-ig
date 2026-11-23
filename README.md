@@ -1,10 +1,11 @@
-# OpenMRS FHIR2 and Lab on FHIR Implementation Guide ( v1.0.1)
+# OpenMRS FHIR2 and Lab on FHIR Implementation Guide ( v1.1.0)
 
 A FHIR R4 implementation guide (FHIR Shorthand + HL7 IG Publisher). It describes:
 
 - the **OpenMRS FHIR2 module 1.9.0** server API, as served by the Bahmni instance,
 - the **Lab on FHIR 1.3.1** laboratory workflow with the LIS (eRegister / DISA),
-- the **Bahmni FHIR2 Additional Extension**, which is not deployed yet.
+- the **Bahmni FHIR2 Additional Extension**, which is not deployed yet,
+- the **Bonolo prescription workflow**: an agreed design (draft, 2026-11-23) for sending prescriptions to the HAPI FHIR server; not yet implemented.
 
 ## Sources
 
